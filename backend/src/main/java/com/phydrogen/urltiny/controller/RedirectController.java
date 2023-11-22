@@ -23,7 +23,6 @@ public class RedirectController {
         List<Url> list = urlService.findAll();
         for (Url url : list) {
             if (id.equals(url.getShortUrl())) {
-                System.out.println("\nWORKED !");
                 String sUrl = url.getLongUrl();
                 redirectView.setUrl(sUrl);
             }
