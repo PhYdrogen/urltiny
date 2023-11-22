@@ -21,6 +21,7 @@ public class UrlService {
         return urlRepo.findById(id).orElseThrow(EntityNotFoundException::new);
     }
     public Url save(Url url) {
+        url.setShortUrl();
         return urlRepo.save(url);
     }
     public void deleteById(String id) {

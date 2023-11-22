@@ -26,7 +26,6 @@ public class UrlController {
 
     @PostMapping
     public Url create(@RequestBody Url url){
-        url.setShortUrl();
         return urlService.save(url);
     }
 
