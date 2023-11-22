@@ -29,4 +29,8 @@ public class Url {
     public String getShortUrl() {
         return shortUrl;
     }
+
+    public void setShortUrl() {
+        this.shortUrl = java.util.UUID.randomUUID().toString().substring(0,8);
+    }
 }
