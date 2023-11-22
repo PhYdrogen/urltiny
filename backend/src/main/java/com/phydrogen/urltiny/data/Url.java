@@ -11,11 +11,13 @@ public class Url {
 
     private String shortUrl;
 
-    public Url(String longUrl, String shortUrl) {
+
+    public Url(String longUrl) {
         this.longUrl = longUrl;
-        this.shortUrl = shortUrl;
     }
 
+    public Url() {}
+    
     public String getId() {
         return id;
     }
