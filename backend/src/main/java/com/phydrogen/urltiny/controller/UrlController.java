@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/todo")
+@RequestMapping("/api/url")
 
 public class UrlController {
     @Autowired
