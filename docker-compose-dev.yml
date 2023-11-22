@@ -6,3 +6,9 @@ services:
       MONGO_INITDB_DATABASE: tinyurl
     ports:
       - 27017:27017
+  backend:
+    image: urltiny-web-backend:latest
+    environment:
+      MONGODB_URI: mongodb://web-db:27017/tinyurl
+    ports:
+      - 8080:8080
