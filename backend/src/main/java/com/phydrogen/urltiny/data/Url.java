@@ -1,5 +1,7 @@
 package com.phydrogen.urltiny.data;
 
+import org.springframework.data.annotation.Id;
+
 public class Url {
 
     @Id
