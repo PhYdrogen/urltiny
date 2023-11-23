@@ -1,14 +1,22 @@
 <div class="url">
-    <h1>tiny Url</h1>
-    <p>please input your long ass url</p>
+    <div class="title">
+        <h1>tiny url</h1>
+        <p>please input your long url</p>
+    </div>
     <form (ngSubmit)="submit(urlForm)" #urlForm="ngForm">
-        <input type="text" placeholder="google.com" name="longUrl" required ngModel>
-        <button type="submit">transform</button>
+        <mat-form-field appearance="outline">
+            <mat-label>Your link</mat-label>
+            <input matInput placeholder="https://www.youtube.com/watch?v=oHg5SJYRHA0" #url="ngModel" name="longUrl" required ngModel>
+        </mat-form-field>
+        <button class="validate-btn" mat-raised-button>transform</button>
+        <div [hidden]="url.valid || url.pristine">Please input something</div>
     </form>
-    <div class="shorted" [hidden]="!submitted">
-        <p>{{output}}</p>
-        <button [cdkCopyToClipboard]="output">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-        </button>
+    <div [hidden]="!submitted">
+        <div class="shorted">
+            <p>{{output}}</p>
+            <button mat-flat-button class="copy-btn" [cdkCopyToClipboard]="output">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M0 0h24v24H0z" fill="none"/><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+            </button>
+        </div>
     </div>
 </div>

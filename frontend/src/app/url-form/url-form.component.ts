@@ -5,11 +5,14 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { PostResUrl } from '../post-res-url';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-url-form',
   standalone: true,
-  imports: [CommonModule, FormsModule, MatIconModule, ClipboardModule],
+  imports: [CommonModule, FormsModule, MatIconModule, MatFormFieldModule, MatInputModule, ClipboardModule, MatButtonModule],
   templateUrl: './url-form.component.html',
   styleUrl: './url-form.component.css'
 })
@@ -17,14 +20,20 @@ export class UrlFormComponent {
   output = "";
   longUrl = "";
   submitted = false;
+  empty = false;
   constructor(private http: HttpClient) {}
 
   submit(form: NgForm) {
     console.log(form.value);
+    if (form.value.longUrl == "") {
+      this.empty = true;
+      return;
+    }
     this.http.post("http://localhost:8080/api/url", {"longUrl": form.value.longUrl}).subscribe((data => {
       console.log(data);
       let dat = data as PostResUrl;
       this.output = "http://" + "localhost:8080" + "/r/" + dat.shortUrl;
+      this.empty = false;
       this.submitted = true;
     }))
   }
