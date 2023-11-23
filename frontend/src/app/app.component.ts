@@ -2,11 +2,12 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { UrlFormComponent } from './url-form/url-form.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet, UrlFormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -20,9 +21,6 @@ export class AppComponent {
     //   console.log(data);
     //   this.title = "yo";
     // }))
-    this.http.get("http://localhost:8080/api/url").subscribe((data => {
-      console.log(data);
-      this.title = "yo";
-    }))
+
   }
 }

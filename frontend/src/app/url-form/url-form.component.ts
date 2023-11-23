@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-url-form',
@@ -9,5 +10,13 @@ import { CommonModule } from '@angular/common';
   styleUrl: './url-form.component.css'
 })
 export class UrlFormComponent {
+  
+  constructor(private http: HttpClient) {}
 
+  submit() {
+    this.http.get("http://localhost:8080/api/url").subscribe((data => {
+      console.log(data);
+    }))
+  }
+  
 }
