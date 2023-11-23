@@ -5,7 +5,7 @@ WORKDIR /app
 
 COPY backend/ .
 
-RUN gradle build
+RUN gradle clean build
 
 FROM openjdk:21
 
@@ -13,7 +13,7 @@ RUN mkdir -p /app
 
 WORKDIR /app
 
-COPY backend/build/libs/*.jar ./backend.jar
+COPY --from=BUILD /app/build/libs/*.jar ./backend.jar
 
 EXPOSE $PORT
 
