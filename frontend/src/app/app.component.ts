@@ -12,15 +12,4 @@ import { UrlFormComponent } from './url-form/url-form.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  constructor(private http: HttpClient) {}
-
-  title = 'myApp';
-
-  submit() {
-    // this.http.post("https://reqres.in/api/users", {"name": "morpheus","job": "leader"}).subscribe((data => {
-    //   console.log(data);
-    //   this.title = "yo";
-    // }))
-
-  }
 }
