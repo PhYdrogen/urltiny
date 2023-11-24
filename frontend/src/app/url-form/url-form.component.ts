@@ -43,7 +43,7 @@ export class UrlFormComponent {
     this.http.post(url + "/api/url", {"longUrl": form.value.longUrl}).subscribe((data => {
       console.log(data);
       let dat = data as PostResUrl;
-      this.output =  + "/r/" + dat.shortUrl;
+      this.output = url + "/r/" + dat.shortUrl;
       this.empty = false;
       this.submitted = true;
     }))
