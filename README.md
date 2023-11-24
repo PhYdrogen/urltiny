@@ -1,9 +1,8 @@
-# URRRRRRRRRRRRRRRL TO URL
+# ⚡ [tinyUrl](https://tinyurl-hmcg.onrender.com)
 
-self explenatory
+url shortener
 
-
-## docker
+## docker / mongodb
 
 docker compose -f docker-compose-dev.yml up
 
