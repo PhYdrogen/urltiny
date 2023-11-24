@@ -8,7 +8,6 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
-import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-url-form',
@@ -18,6 +17,9 @@ import { environment } from '../../environments/environment';
   styleUrl: './url-form.component.css'
 })
 export class UrlFormComponent {
+  env = import.meta.env.NG_APP_ENV;
+  api = import.meta.env.NG_APP_PROXY_API;
+  backurl = import.meta.env.NG_APP_PROXY_BACK;
   output = "";
   longUrl = "";
   submitted = false;
@@ -33,10 +35,10 @@ export class UrlFormComponent {
     }
 
 
-    if (environment.production) {
-      url = environment.envVar.PROXY_BACK;
+    if (this.env != "production") {
+      url = this.backurl;
     } else {
-      url = "localhost:8080";
+      url = this.api;
     }
     this.http.post(url + "/api/url", {"longUrl": form.value.longUrl}).subscribe((data => {
       console.log(data);
