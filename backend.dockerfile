@@ -17,4 +17,6 @@ COPY --from=BUILD /app/build/libs/*.jar ./backend.jar
 
 EXPOSE $PORT
 
+ENV MONGODB_URI=$MONGODB_URI
+
 CMD [ "java", "-jar", "./backend.jar" ]
