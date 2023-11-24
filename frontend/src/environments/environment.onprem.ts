@@ -1,10 +1,7 @@
 export const environment = {
-  ,
+  production: true,
   envVar: {
-    /**
-     * Add environment variables you want to retrieve from process
-     * PORT:4200,
-     * VAR_NAME: defaultValue
-     */
+    PROXY_API: "http://localhost:4200",
+    PROXY_BACK: "http://localhost:8080"
   }
 };

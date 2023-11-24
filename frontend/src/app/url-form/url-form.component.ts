@@ -8,6 +8,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-url-form',
@@ -24,15 +25,23 @@ export class UrlFormComponent {
   constructor(private http: HttpClient) {}
 
   submit(form: NgForm) {
+    let url = "";
     console.log(form.value);
     if (form.value.longUrl == "") {
       this.empty = true;
       return;
     }
-    this.http.post("http://localhost:8080/api/url", {"longUrl": form.value.longUrl}).subscribe((data => {
+
+
+    if (environment.production) {
+      url = environment.envVar.PROXY_BACK;
+    } else {
+      url = "localhost:8080";
+    }
+    this.http.post(url + "/api/url", {"longUrl": form.value.longUrl}).subscribe((data => {
       console.log(data);
       let dat = data as PostResUrl;
-      this.output = "http://" + "localhost:8080" + "/r/" + dat.shortUrl;
+      this.output =  + "/r/" + dat.shortUrl;
       this.empty = false;
       this.submitted = true;
     }))
