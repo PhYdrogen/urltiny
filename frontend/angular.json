@@ -52,21 +52,7 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.development.ts"
-                }
-              ]
-            },
-            "onprem": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.onprem.ts"
-                }
-              ]
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -106,12 +92,6 @@
               "src/styles.css"
             ],
             "scripts": []
-          }
-        },
-        "collect-vars": {
-          "builder": "ng-process-env:collectVars",
-          "options": {
-            "environmentFile": "src/environments/environment.onprem.ts"
           }
         }
       }
